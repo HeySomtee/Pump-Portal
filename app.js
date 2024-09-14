@@ -193,8 +193,10 @@ bot.onText(/\/remove/, (msg) => {
 });
 
 // Use the function when a message is received
-bot.on('message', (msg) => {
-    checkContractAddressAndPrompt(msg, bot);
+bot.on('message', (msg) => {    
+    if (!userState[msg.from.id]) {
+        checkContractAddressAndPrompt(msg, bot);
+    }
 });
 
 // Log that the bot is running

@@ -19,6 +19,10 @@ async function checkContractAddressAndPrompt(msg, bot) {
         blockchain = 'Tron';
     }
 
+    if (text.startsWith('/')) {
+        return
+    }
+
     // If it's a valid contract address
     if (blockchain === 'Solana') {
         const options = {
