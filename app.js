@@ -166,6 +166,7 @@ bot.on('message', async (msg) => {
             const updatedApps = userRecord.apps.filter(app => app.name.toLowerCase() !== appToRemove);
             
             if (updatedApps.length === userRecord.apps.length) {
+                delete userState[userId]
                 return bot.sendMessage(chatId, `App "${msg.text}" not found.`);
             }
 

@@ -26,39 +26,12 @@ async function checkContractAddressAndPrompt(msg, bot) {
     // If it's a valid contract address
     if (blockchain === 'Solana') {
         const options = {
-            reply_markup: {
+            reply_markup: { //TODO: LIST ALL APPS FROM DB
                 inline_keyboard: [
                     [
+                        { text: 'Dex Screener', web_app: { url: `https://dexscreener.com/${blockchain.toLowerCase()}/${text}` } },
                         { text: 'Pump Fun', web_app: { url: `https://pump.fun/${text}` } },
-                        { text: 'Dex Screener', web_app: { url: `https://dexscreener.com/${blockchain.toLowerCase()}/${text}` } }
-                    ]
-                ]
-            }
-        };
-
-        // Send the "open with" message
-        bot.sendMessage(chatId, `Open with:`, options);
-    } else if (blockchain === 'Ethereum') {
-        const options = {
-            reply_markup: {
-                inline_keyboard: [
-                    [
-                        { text: 'Dex Screener', web_app: { url: `https://dexscreener.com/${blockchain.toLowerCase()}/${text}` } }
-                    ]
-                ]
-            }
-        };
-
-        // Send the "open with" message
-        bot.sendMessage(chatId, `Open with:`, options);
-
-    } else if (blockchain === 'Tron') {
-        const options = {
-            reply_markup: {
-                inline_keyboard: [
-                    [
                         { text: 'Sun Pump', web_app: { url: `https://sunpump.meme/token/${text}` } },
-                        { text: 'Dex Screener', web_app: { url: `https://dexscreener.com/${blockchain.toLowerCase()}/${text.toLowerCase()}` } }
                     ]
                 ]
             }
@@ -66,7 +39,6 @@ async function checkContractAddressAndPrompt(msg, bot) {
 
         // Send the "open with" message
         bot.sendMessage(chatId, `Open with:`, options);
-
     } else {
         bot.sendMessage(chatId, 'This does not seem to be a valid contract address.');
     }
